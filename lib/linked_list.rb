@@ -17,7 +17,18 @@ class LinkedList
     current = @head
     while current.next_node != nil do
       count += 1
+      current = current.next_node
     end
     count
+  end
+
+  def to_string
+    return '' unless @head
+    current = @head
+    string = current.data.to_s
+    while current.next_node != nil do
+      string << current.data.to_s
+    end
+    string
   end
 end
