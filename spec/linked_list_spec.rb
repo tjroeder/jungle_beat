@@ -42,5 +42,13 @@ RSpec.describe LinkedList, type: :model do
         expect(list_1.count).to eq(1)
       end
     end
+
+    describe '#to_string' do
+      it 'should return node data in a single string' do
+        list_1.append('doop')
+
+        expect(list_1.to_string).to eq('doop')
+      end
+    end
   end
 end
