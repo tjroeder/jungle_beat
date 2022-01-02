@@ -74,5 +74,33 @@ RSpec.describe LinkedList, type: :model do
         expect(list_1.to_string).to eq('doop deep dah')
       end
     end
+
+    describe '#prepend' do
+      it 'should create new head if no head' do
+        expect(list_1.head).to eq(nil)
+
+        list_1.prepend('doop')
+
+        expect(list_1.head.data).to eq('doop')
+      end
+
+      it 'should create a new head node' do
+        list_1.append('doop')
+
+        expect(list_1.head.data).to eq('doop')
+        list_1.prepend('deep')
+
+        expect(list_1.head.data).to eq('deep')
+      end
+
+      it 'should have the old head node as head.next_node' do
+        list_1.append('doop')
+        list_1.append('deep')
+        expect(list_1.head.data).to eq('doop')
+
+        list_1.prepend('dop')
+        expect(list_1.head.next_node.data).to eq('doop')
+      end
+    end
   end
 end
