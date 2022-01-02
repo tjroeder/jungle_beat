@@ -101,6 +101,47 @@ RSpec.describe LinkedList, type: :model do
         list_1.prepend('dop')
         expect(list_1.head.next_node.data).to eq('doop')
       end
+
+      it 'should return new node data' do
+        expect(list_1.prepend'woo').to eq('woo')
+      end
+    end
+
+    describe '#insert' do
+      it 'should insert new node in the first position if 0 or less' do
+        list_1.append('doop')
+        list_1.append('deep')
+        list_1.insert(0, 'woo')
+        
+        expect(list_1.head.data).to eq('woo')
+        
+        list_1.insert(-1, 'wat')
+        expect(list_1.head.data).to eq('wat')
+      end
+      
+      it 'should insert new node somewhere in the middle' do
+        list_1.append('doop')
+        list_1.append('deep')
+        list_1.append('woop')
+        list_1.insert(1, 'woo')
+
+        expect(list_1.head.next_node.data).to eq('woo')
+      end
+      
+      it 'should insert new node in the last position' do
+        list_1.append('doop')
+        list_1.append('deep')
+        list_1.insert(2, 'woo')
+        
+        expect(list_1.head.next_node.next_node.data).to eq('woo')
+
+        list_1.insert(5, 'wat')
+        expect(list_1.head.next_node.next_node.next_node.data).to eq('wat')
+      end
+
+      it 'should return the data of the new node' do
+        expect(list_1.insert(0, 'woo')).to eq('woo')
+      end
     end
   end
 end
