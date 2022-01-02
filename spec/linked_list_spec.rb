@@ -31,6 +31,14 @@ RSpec.describe LinkedList, type: :model do
 
         expect(list_1.head.next_node).to eq(nil)
       end
+
+      it 'should add new node to end if head exists' do
+        list_1.append('doop')
+        list_1.append('deep')
+
+        expect(list_1.head.next_node).to be_a(Node)
+        expect(list_1.head.next_node).to have_attributes(data: 'deep')
+      end
     end
 
     describe '#count' do
@@ -41,6 +49,14 @@ RSpec.describe LinkedList, type: :model do
 
         expect(list_1.count).to eq(1)
       end
+
+      it 'should return the total node count with multiple nodes' do
+        list_1.append('doop')
+        list_1.append('deep')
+        list_1.append('dah')
+
+        expect(list_1.count).to eq(3)
+      end
     end
 
     describe '#to_string' do
@@ -48,6 +64,14 @@ RSpec.describe LinkedList, type: :model do
         list_1.append('doop')
 
         expect(list_1.to_string).to eq('doop')
+      end
+
+      it 'should return node data in a string separated by spaces' do
+        list_1.append('doop')
+        list_1.append('deep')
+        list_1.append('dah')
+
+        expect(list_1.to_string).to eq('doop deep dah')
       end
     end
   end
