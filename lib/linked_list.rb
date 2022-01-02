@@ -50,5 +50,23 @@ class LinkedList
     old_head = @head
     @head = Node.new(data)
     @head.next_node = old_head
+    data
+  end
+
+  def insert(target, data)
+    return prepend(data) if target <= 0
+    return append(data) if target >= self.count
+
+    current = @head
+    prev = nil
+
+    target.times do
+      prev = current
+      current = current.next_node
+    end
+
+    prev.next_node = Node.new(data)
+    prev.next_node.next_node = current
+    data
   end
 end
