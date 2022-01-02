@@ -18,6 +18,5 @@ RSpec.describe Node, type: :model do
 
       expect(node_1.next_node).to eq(node_2)
     end
-  
   end
 end
