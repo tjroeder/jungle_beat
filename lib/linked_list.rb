@@ -43,4 +43,12 @@ class LinkedList
     end
     string << ' ' + current.data.to_s
   end
+
+  def prepend(data)
+    @head = Node.new(data) unless @head
+
+    old_head = @head
+    @head = Node.new(data)
+    @head.next_node = old_head
+  end
 end
