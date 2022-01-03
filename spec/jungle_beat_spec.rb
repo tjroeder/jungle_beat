@@ -24,6 +24,11 @@ RSpec.describe JungleBeat, type: :model do
       it 'can add multiple new nodes to list separated by spaces' do
         jb.append('doo laa haa deep goo')
 
+        expect(jb.list.head.data).to eq('doo')
+        expect(jb.list.head.next_node.data).to eq('laa')
+        expect(jb.list.head.next_node.next_node.data).to eq('haa')
+        expect(jb.list.head.next_node.next_node.next_node.data).to eq('deep')
+        expect(jb.list.find_tail.data).to eq('goo')
         expect(jb.list.count).to eq(5)
       end
     end
