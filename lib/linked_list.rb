@@ -14,15 +14,7 @@ class LinkedList
   end
 
   def append(data)
-    node = @head
-    if node
-      while node.next_node
-        node = node.next_node
-      end
-      node.next_node = Node.new(data)
-    else 
-      @head = Node.new(data)
-    end
+    @head ? find_tail.next_node = Node.new(data) : @head = Node.new(data)
     data
   end
 
