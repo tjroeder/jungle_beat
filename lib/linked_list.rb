@@ -84,4 +84,15 @@ class LinkedList
     end
     string
   end
+
+  def includes?(sel_data)
+    current = @head
+    return false unless current.next_node
+    return true if current.data == sel_data
+
+    while (current = current.next_node)
+      return true if current.data == sel_data
+    end
+    return false
+  end
 end
