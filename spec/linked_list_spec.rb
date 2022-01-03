@@ -9,6 +9,22 @@ RSpec.describe LinkedList, type: :model do
   end
 
   describe 'instance methods' do
+    describe '#find_tail' do
+      it 'should return a node type' do
+        list_1.append('woo')
+
+        expect(list_1.find_tail).to be_a(Node)
+      end
+
+      it 'should return the last node in the list' do
+        list_1.append('woo')
+        list_1.append('deep')
+        list_1.append('dop')
+
+        expect(list_1.find_tail.data).to eq('dop')
+      end
+    end
+
     describe '#append' do
       it 'should return the node data when appended' do
         expect(list_1.append('doop')).to eq('doop')
