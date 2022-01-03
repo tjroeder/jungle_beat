@@ -48,5 +48,13 @@ RSpec.describe JungleBeat, type: :model do
         expect(jb.count).to eq(5)
       end
     end
+
+    describe '#play' do
+      it 'returns the linked list song beat' do
+        jb.append('doo deep doo dooop loooo')
+
+        expect(jb.play).to eq(`say -r 175 'doo'`)
+      end
+    end
   end
 end
