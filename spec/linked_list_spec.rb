@@ -200,6 +200,46 @@ RSpec.describe LinkedList, type: :model do
 
         expect(list_1.find(1, 4)).to eq('wat huh deep')
       end
+
+      it 'should return empty string if target is outside the linked list' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('huh')
+
+        expect(list_1.find(3, 1)).to eq('')
+      end
+    end
+
+    describe '#includes?' do
+      it 'should return true if it is the first node' do
+        list_1.append('woo')
+        list_1.append('wat')
+
+        expect(list_1.includes?('woo')).to eq(true)
+      end
+
+      it 'should return false if it is not inside the linked list' do
+        list_1.append('woo')
+        list_1.append('wat')
+
+        expect(list_1.includes?('deep')).to eq(false)
+      end
+
+      it 'should return true if data is inside the linked list' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('deep')
+
+        expect(list_1.includes?('wat')).to eq(true)
+      end
+
+      it 'should return true if data is last in the linked list' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('deep')
+
+        expect(list_1.includes?('deep')).to eq(true)
+      end
     end
   end
 end
