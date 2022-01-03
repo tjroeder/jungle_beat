@@ -31,6 +31,14 @@ RSpec.describe JungleBeat, type: :model do
         expect(jb.list.find_tail.data).to eq('goo')
         expect(jb.list.count).to eq(5)
       end
+
+      it 'can append multiple nodes after nodes have been appended' do
+        jb.append('doo da')
+        jb.append('deep woo')
+
+        expect(jb.list.head.next_node.next_node.data).to eq('deep')
+        expect(jb.list.find_tail.data).to eq('woo')
+      end
     end
 
     describe '#count' do
