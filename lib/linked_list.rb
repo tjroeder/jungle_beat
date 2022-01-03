@@ -72,7 +72,8 @@ class LinkedList
   def find(target, amount)
     current = @head
     target.times do
-      current = current.next_node
+      return '' unless current.next_node
+      current = current.next_node 
     end
 
     string = ''
