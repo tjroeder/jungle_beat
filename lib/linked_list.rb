@@ -68,4 +68,19 @@ class LinkedList
     prev.next_node.next_node = current
     data
   end
+
+  def find(target, amount)
+    current = @head
+    target.times do
+      current = current.next_node
+    end
+
+    string = ''
+    amount.times.with_index do |index|
+      string << current.data
+      current.next_node ? current = current.next_node : break
+      string << ' ' unless amount == index + 1
+    end
+    string
+  end
 end
