@@ -95,4 +95,23 @@ class LinkedList
     end
     return false
   end
+
+  def pop
+    return nil unless @head
+    unless @head.next_node
+      @head = nil
+      return nil
+    end
+
+    current = @head
+    prev = nil
+
+    while current.next_node
+      prev = current
+      current = current.next_node
+    end
+
+    prev.next_node = nil
+    current.data
+  end
 end
