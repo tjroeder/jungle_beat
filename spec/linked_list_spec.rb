@@ -241,5 +241,36 @@ RSpec.describe LinkedList, type: :model do
         expect(list_1.includes?('deep')).to eq(true)
       end
     end
+
+    describe '#pop' do
+      it 'should return the last value' do
+        list_1.append('woo')
+        list_1.append('wat')
+
+        expect(list_1.pop).to eq('wat')
+      end
+
+      it 'should remove the last item in the list' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.pop
+
+        expect(list_1.find_tail.data).to eq('woo')
+      end
+
+      it 'should remove the head if there is one node in the list' do
+        list_1.append('woo')
+        list_1.pop
+
+        expect(list_1.head).to eq(nil)
+      end
+
+      it 'should do nothing if there are no items in the list' do
+        list_1.append('woo')
+        list_1.pop
+
+        expect(list_1.pop).to eq(nil)
+      end
+    end
   end
 end
