@@ -6,6 +6,13 @@ class LinkedList
     @head = nil
   end
 
+  def find_tail
+    current = @head
+
+    return current unless current.next_node
+    return current unless current.next_node while current = current.next_node
+  end
+
   def append(data)
     node = @head
     if node
