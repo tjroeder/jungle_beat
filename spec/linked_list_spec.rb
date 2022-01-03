@@ -159,5 +159,47 @@ RSpec.describe LinkedList, type: :model do
         expect(list_1.insert(0, 'woo')).to eq('woo')
       end
     end
+
+    describe '#find' do
+      it 'should return nothing if request 0 nodes' do
+        list_1.append('deep')
+        list_1.append('woo')
+
+        expect(list_1.find(1, 0)).to eq('')
+      end
+
+      it 'should return a string element' do
+        list_1.append('woo')
+        list_1.append('wat')
+
+        expect(list_1.find(1, 1)).to be_a(String)
+      end
+
+      it 'should return one element at a given location' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('huh')
+
+        expect(list_1.find(1, 1)).to eq('wat')
+      end
+
+      it 'should return multiple elements from a given location' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('huh')
+        list_1.append('deep')
+
+        expect(list_1.find(1, 3)).to eq('wat huh deep')
+      end
+
+      it 'should return all elements even if outside the list' do
+        list_1.append('woo')
+        list_1.append('wat')
+        list_1.append('huh')
+        list_1.append('deep')
+
+        expect(list_1.find(1, 4)).to eq('wat huh deep')
+      end
+    end
   end
 end
